@@ -13,9 +13,9 @@ export default function SidebarMain() {
         </button>
       </div>
       <div className="mt-[32px]">
-        <button className="btn btn-primary btn-outline w-full">
+        <button className="btn btn-primary btn-outline w-full font-normal">
           <GoPlus className="w-[20px] h-[20px]" />
-          <div className="font-normal">Create New Project</div>
+          Create New Project
         </button>
       </div>
     </div>
