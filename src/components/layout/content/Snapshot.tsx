@@ -23,7 +23,7 @@ export default function ContentSnapshot() {
           value="83"
           max="100"
         ></progress>
-        <div className="text-[14px] text-[#7F74FF]">83%</div>
+        <div className="text-[14px]">83%</div>
         <div className="text-[14px] ml-auto">Timestamp</div>
         <div className="text-[14px]">08/06/2024</div>
       </div>
