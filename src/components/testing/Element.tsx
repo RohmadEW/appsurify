@@ -36,7 +36,7 @@ export default function ContentElement() {
           </div>
         </div>
         <div className="collapse collapse-arrow rounded-none">
-          <input type="checkbox" />
+          <input type="checkbox" defaultChecked />
           <div className="collapse-title flex items-center">
             <div className="text-[16px] font-medium mr-3">Tested Elements</div>
             <div className="px-2 py-1 bg-blue-50 text-blue-400 rounded-full text-xs">
