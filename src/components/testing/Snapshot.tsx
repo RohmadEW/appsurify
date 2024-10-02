@@ -1,6 +1,6 @@
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
-import snapshot from "../../../assets/snapshot-1.png";
+import snapshot from "../../assets/snapshot-1.png";
 
 export default function ContentSnapshot() {
   return (

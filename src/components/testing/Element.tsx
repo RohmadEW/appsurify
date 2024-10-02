@@ -1,6 +1,6 @@
 import { GoChevronLeft } from "react-icons/go";
-import { ButtonType } from "../../../types/button";
-import ButtonTesting from "../../general/ButtonTesting";
+import { ButtonType } from "../../types/button";
+import ButtonTesting from "../general/ButtonTesting";
 
 export default function ContentElement() {
   return (
