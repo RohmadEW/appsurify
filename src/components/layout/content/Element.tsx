@@ -1,4 +1,6 @@
 import { GoChevronLeft } from "react-icons/go";
+import { ButtonType } from "../../../types/button";
+import ButtonTesting from "../../general/ButtonTesting";
 
 export default function ContentElement() {
   return (
@@ -25,12 +27,12 @@ export default function ContentElement() {
             </div>
           </div>
           <div className="collapse-content space-y-1">
-            <div className="rounded-[8px] border-l-8 border border-[#FF7070] px-[24px] py-[12px]">
+            <ButtonTesting type={ButtonType.UNTESTED}>
               form/input/email
-            </div>
-            <div className="rounded-[8px] border-l-8 border border-[#FF7070] px-[24px] py-[12px]">
+            </ButtonTesting>
+            <ButtonTesting type={ButtonType.UNTESTED}>
               form/input/reasonforreachout
-            </div>
+            </ButtonTesting>
           </div>
         </div>
         <div className="collapse collapse-arrow rounded-none">
@@ -42,21 +44,21 @@ export default function ContentElement() {
             </div>
           </div>
           <div className="collapse-content space-y-1">
-            <div className="rounded-[8px] border-l-8 border border-[#6DFF8D] px-[24px] py-[12px]">
+            <ButtonTesting type={ButtonType.TESTED}>
               form/input/firstname
-            </div>
-            <div className="rounded-[8px] border-l-8 border border-[#6DFF8D] px-[24px] py-[12px]">
+            </ButtonTesting>
+            <ButtonTesting type={ButtonType.TESTED}>
               form/input/lastname
-            </div>
-            <div className="rounded-[8px] border-l-8 border border-[#6DFF8D] px-[24px] py-[12px]">
+            </ButtonTesting>
+            <ButtonTesting type={ButtonType.TESTED}>
               form/input/companyname
-            </div>
-            <div className="rounded-[8px] border-l-8 border border-[#6DFF8D] px-[24px] py-[12px]">
+            </ButtonTesting>
+            <ButtonTesting type={ButtonType.TESTED}>
               form/input/jobtitle
-            </div>
-            <div className="rounded-[8px] border-l-8 border border-[#6DFF8D] px-[24px] py-[12px]">
+            </ButtonTesting>
+            <ButtonTesting type={ButtonType.TESTED}>
               form/input/submit
-            </div>
+            </ButtonTesting>
           </div>
         </div>
       </div>
