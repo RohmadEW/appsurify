@@ -1,5 +1,6 @@
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
+import { Link } from "react-router-dom";
 import snapshot from "../../assets/snapshot-1.png";
 
 export default function ContentSnapshot() {
@@ -17,7 +18,9 @@ export default function ContentSnapshot() {
         <BsThreeDotsVertical className="w-[20px] h-[20px] ml-auto" />
       </div>
       <div className="h-[48px] p-[16px] flex items-center gap-[40px]">
-        <div className="text-[14px]">Coverage Percentage</div>
+        <Link to="/coverage-over-time" className="text-[14px]">
+          Coverage Percentage
+        </Link>
         <progress
           className="progress progress-warning w-[80px]"
           value="83"
