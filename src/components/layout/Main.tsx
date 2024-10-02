@@ -1,3 +1,4 @@
+import ContentMain from "./content/Main";
 import HeaderMain from "./header/Main";
 import SidebarMain from "./sidebar/Main";
 
@@ -10,6 +11,9 @@ export default function LayoutMain() {
       <div className="w-[calc(100vw-296px)] h-[100vh]">
         <div className="w-full h-[58px] shadow-sm">
           <HeaderMain />
+        </div>
+        <div className="w-full h-[calc(100vh-58px)] overflow-y-auto">
+          <ContentMain />
         </div>
       </div>
     </div>
