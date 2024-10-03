@@ -15,7 +15,7 @@ export default function IndividualTestingDrawer({
   testing,
 }: IndividualTestingDrawerProps) {
   return (
-    <div className="w-[469px] min-h-[calc(100vh-58px)] bg-white p-[24px]">
+    <div className="w-[469px] min-h-[calc(100vh-58px)] bg-white p-[24px] border-t">
       <div className="flex justify-between items-center">
         <div className="font-bold text-[20px]">Pages “{testing?.page}”</div>
         <button
