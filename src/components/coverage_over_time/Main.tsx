@@ -1,10 +1,14 @@
 import CoverageOverTimeChart from "./Chart";
+import CoverageOverTimeTable from "./Table";
 
 export default function CoverageOverTimeMain() {
   return (
-    <div className="p-[24px] w-full flex gap-[20px]">
+    <div className="p-[24px]">
       <div className="w-full h-[219px]">
         <CoverageOverTimeChart />
+      </div>
+      <div className="mt-[24px]">
+        <CoverageOverTimeTable />
       </div>
     </div>
   );

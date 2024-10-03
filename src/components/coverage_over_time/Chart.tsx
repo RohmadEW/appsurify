@@ -1,24 +1,14 @@
 import "chart.js/auto";
 import { Line } from "react-chartjs-2";
+import { dataCoverageOverTime } from "../../types/run_testing";
 
 export default function CoverageOverTimeChart() {
   const data = {
-    labels: [
-      "Run #1",
-      "Run #2",
-      "Run #3",
-      "Run #4",
-      "Run #5",
-      "Run #6",
-      "Run #7",
-      "Run #8",
-      "Run #9",
-      "Run #10",
-    ],
+    labels: dataCoverageOverTime.map((data) => data.name),
     datasets: [
       {
         label: "My First Dataset",
-        data: [0, 10, 15, 20, 20, 30, 45, 50, 60, 100],
+        data: dataCoverageOverTime.map((data) => data.coveragePercentage),
         fill: true,
         borderColor: "rgb(75, 192, 192)",
         tension: 0.1,
@@ -46,7 +36,10 @@ export default function CoverageOverTimeChart() {
             },
             scales: {
               y: {
+                min: 0,
+                max: 100,
                 ticks: {
+                  stepSize: 25,
                   callback: function (value) {
                     return value + "%";
                   },
