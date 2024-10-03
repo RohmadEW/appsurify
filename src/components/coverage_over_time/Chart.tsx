@@ -11,9 +11,31 @@ export default function CoverageOverTimeChart() {
         label: "Tested",
         data: dataCoverageOverTime.map((data) => data.coveragePercentage),
         fill: true,
-        borderColor: dataCoverageOverTime.map((data) =>
-          generateColorTesting(data.coveragePercentage)
-        ),
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        borderColor: (context: any) => {
+          const chart = context.chart;
+          const { ctx, chartArea } = chart;
+
+          if (!chartArea) {
+            // This case happens on initial chart load
+            return null;
+          }
+
+          const gradient = ctx.createLinearGradient(
+            chartArea.left,
+            0,
+            chartArea.right,
+            0
+          );
+
+          dataCoverageOverTime.forEach((data, index) => {
+            const color = generateColorTesting(data.coveragePercentage);
+            const position = index / (dataCoverageOverTime.length - 1);
+            gradient.addColorStop(position, color);
+          });
+
+          return gradient;
+        },
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         backgroundColor: (context: any) => {
           const chart = context.chart;
@@ -47,8 +69,6 @@ export default function CoverageOverTimeChart() {
       },
     ],
   };
-
-  console.log(data);
 
   return (
     <div className="w-full h-full rounded-lg bg-[#F9FAFF] shadow-md p-[16px]">
