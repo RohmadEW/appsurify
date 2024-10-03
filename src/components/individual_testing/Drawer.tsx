@@ -2,19 +2,22 @@ import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 import { IoMdClose } from "react-icons/io";
 import snapshot from "../../assets/snapshot-2.png";
 import { getColorTesting } from "../../types/color";
+import { IndividualTestingType } from "../../types/individual_testing";
 import CustomProgressBar from "../general/CustomProgress";
 
 interface IndividualTestingDrawerProps {
   setShowDrawer: (show: boolean) => void;
+  testing?: IndividualTestingType;
 }
 
 export default function IndividualTestingDrawer({
   setShowDrawer,
+  testing,
 }: IndividualTestingDrawerProps) {
   return (
     <div className="w-[469px] min-h-[calc(100vh-58px)] bg-white p-[24px]">
       <div className="flex justify-between items-center">
-        <div className="font-bold text-[20px]">Pages “/login”</div>
+        <div className="font-bold text-[20px]">Pages “{testing?.page}”</div>
         <button
           className="btn btn-ghost btn-primary"
           onClick={() => setShowDrawer(false)}

@@ -1,15 +1,25 @@
 import { IoIosArrowRoundDown, IoIosArrowRoundUp } from "react-icons/io";
 import { getColorTesting } from "../../types/color";
-import { dataIndividualTesting } from "../../types/individual_testing";
+import {
+  dataIndividualTesting,
+  IndividualTestingType,
+} from "../../types/individual_testing";
 import CustomProgressBar from "../general/CustomProgress";
 
 interface IndividualTestingTableProps {
   setShowDrawer: (show: boolean) => void;
+  setTesting: (testing: IndividualTestingType) => void;
 }
 
 export default function IndividualTestingTable({
   setShowDrawer,
+  setTesting,
 }: IndividualTestingTableProps) {
+  const handleShowDrawer = (testing: IndividualTestingType) => {
+    setTesting(testing);
+    setShowDrawer(true);
+  };
+
   return (
     <table className="table table-zebra rounded-lg">
       <thead>
@@ -49,8 +59,8 @@ export default function IndividualTestingTable({
           <tr key={index}>
             <td>
               <div
-                className="hover:text-blue-500 cursor-pointer"
-                onClick={() => setShowDrawer(true)}
+                className="hover:text-blue-500 cursor-pointer inline-block"
+                onClick={() => handleShowDrawer(data)}
               >
                 {data.page}
               </div>

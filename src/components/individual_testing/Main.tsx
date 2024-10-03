@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { GoChevronLeft } from "react-icons/go";
 import { useNavigate } from "react-router-dom";
+import { IndividualTestingType } from "../../types/individual_testing";
 import Pagination from "../general/Pagination";
 import IndividualTestingDrawer from "./Drawer";
 import IndividualTestingTable from "./Table";
@@ -8,14 +9,20 @@ import IndividualTestingTable from "./Table";
 export default function IndividualTestingMain() {
   const navigate = useNavigate();
   const [showDrawer, setShowDrawer] = useState(false);
+  const [testing, setTesting] = useState<IndividualTestingType>();
 
   return (
     <div className="relative  h-[calc(100vh-58px)]">
-      {showDrawer && (
-        <div className="absolute right-0 top-0 h-[calc(100vh-58px)] z-[9] overflow-y-auto shadow-md">
-          <IndividualTestingDrawer setShowDrawer={setShowDrawer} />
-        </div>
-      )}
+      <div
+        className={`absolute right-0 top-0 h-[calc(100vh-58px)] z-[9] overflow-y-auto shadow-md transition-transform duration-300 ${
+          showDrawer ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
+        <IndividualTestingDrawer
+          setShowDrawer={setShowDrawer}
+          testing={testing}
+        />
+      </div>
       <div className="p-[24px]  h-[calc(100vh-58px)] overflow-y-auto">
         <div className="flex items-center gap-3">
           <button
@@ -47,7 +54,10 @@ export default function IndividualTestingMain() {
           </div>
         </div>
         <div className="mt-[14px]">
-          <IndividualTestingTable setShowDrawer={setShowDrawer} />
+          <IndividualTestingTable
+            setShowDrawer={setShowDrawer}
+            setTesting={setTesting}
+          />
         </div>
         <div className="mt-[24px]">
           <Pagination />
