@@ -1,24 +1,9 @@
 import "chart.js/auto";
-import Chart from "chart.js/auto";
-import { useEffect, useRef } from "react";
 import { Line } from "react-chartjs-2";
 import { generateColorTesting } from "../../types/color";
 import { dataCoverageOverTime } from "../../types/coverage_over_time";
 
 export default function CoverageOverTimeChart() {
-  const chartRef = useRef<Chart<"line">>(null);
-
-  useEffect(() => {
-    const chart = chartRef.current;
-    if (chart) {
-      const ctx = chart.ctx;
-      const gradient = ctx.createLinearGradient(0, 0, 0, chart.height);
-      gradient.addColorStop(0, generateColorTesting(100)); // Warna atas (misalnya hijau)
-      gradient.addColorStop(1, generateColorTesting(0)); // Warna bawah (misalnya merah)
-      chart.update();
-    }
-  }, []);
-
   const data = {
     labels: dataCoverageOverTime.map((data) => data.name),
     datasets: [
@@ -29,6 +14,31 @@ export default function CoverageOverTimeChart() {
         borderColor: dataCoverageOverTime.map((data) =>
           generateColorTesting(data.coveragePercentage)
         ),
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        backgroundColor: (context: any) => {
+          const chart = context.chart;
+          const { ctx, chartArea } = chart;
+
+          if (!chartArea) {
+            // This case happens on initial chart load
+            return null;
+          }
+
+          const gradient = ctx.createLinearGradient(
+            chartArea.left,
+            0,
+            chartArea.right,
+            0
+          );
+
+          dataCoverageOverTime.forEach((data, index) => {
+            const color = generateColorTesting(data.coveragePercentage, 100);
+            const position = index / (dataCoverageOverTime.length - 1);
+            gradient.addColorStop(position, color);
+          });
+
+          return gradient;
+        },
         borderWidth: 2,
         tension: 0.4,
         pointBackgroundColor: dataCoverageOverTime.map((data) =>
@@ -37,6 +47,8 @@ export default function CoverageOverTimeChart() {
       },
     ],
   };
+
+  console.log(data);
 
   return (
     <div className="w-full h-full rounded-lg bg-[#F9FAFF] shadow-md p-[16px]">
@@ -47,7 +59,6 @@ export default function CoverageOverTimeChart() {
       </div>
       <div className="w-full h-[150px] mt-[10px]">
         <Line
-          ref={chartRef}
           data={data}
           options={{
             responsive: true,
