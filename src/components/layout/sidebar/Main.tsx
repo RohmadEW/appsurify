@@ -1,4 +1,5 @@
 import { GoPlus } from "react-icons/go";
+import { Link } from "react-router-dom";
 import logo from "../../../assets/logo.png";
 
 export default function SidebarMain() {
@@ -8,9 +9,9 @@ export default function SidebarMain() {
       <hr />
       <div className="mt-[32px] text-[16px] text-[#757575]">Projects</div>
       <div className="mt-[16px]">
-        <button className="btn btn-primary w-full">
+        <Link to="/" className="btn btn-primary w-full">
           <div className="text-left w-full">Garfield</div>
-        </button>
+        </Link>
       </div>
       <div className="mt-[32px]">
         <button className="btn btn-primary btn-outline w-full font-normal">
