@@ -3,7 +3,13 @@ import { getColorTesting } from "../../types/color";
 import { dataIndividualTesting } from "../../types/individual_testing";
 import CustomProgressBar from "../general/CustomProgress";
 
-export default function IndividualTestingTable() {
+interface IndividualTestingTableProps {
+  setShowDrawer: (show: boolean) => void;
+}
+
+export default function IndividualTestingTable({
+  setShowDrawer,
+}: IndividualTestingTableProps) {
   return (
     <table className="table table-zebra rounded-lg">
       <thead>
@@ -41,7 +47,14 @@ export default function IndividualTestingTable() {
       <tbody className="text-base">
         {dataIndividualTesting.map((data, index) => (
           <tr key={index}>
-            <td>{data.page}</td>
+            <td>
+              <div
+                className="hover:text-blue-500 cursor-pointer"
+                onClick={() => setShowDrawer(true)}
+              >
+                {data.page}
+              </div>
+            </td>
             <td>{data.snapshot}</td>
             <td>
               {data.tested} of {data.tested + data.untested}
