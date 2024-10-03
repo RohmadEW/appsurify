@@ -1,3 +1,4 @@
+import Pagination from "../general/Pagination";
 import CoverageOverTimeChart from "./Chart";
 import CoverageOverTimeTable from "./Table";
 
@@ -9,6 +10,9 @@ export default function CoverageOverTimeMain() {
       </div>
       <div className="mt-[24px]">
         <CoverageOverTimeTable />
+      </div>
+      <div className="mt-[24px]">
+        <Pagination />
       </div>
     </div>
   );
