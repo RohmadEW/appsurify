@@ -1,6 +1,7 @@
 import { IoIosArrowRoundDown, IoIosArrowRoundUp } from "react-icons/io";
+import { Link } from "react-router-dom";
 import { generateColorTesting } from "../../types/color";
-import { dataCoverageOverTime } from "../../types/run_testing";
+import { dataCoverageOverTime } from "../../types/coverage_over_time";
 import CustomProgressBar from "../general/CustomProgress";
 
 export default function CoverageOverTimeTable() {
@@ -39,7 +40,14 @@ export default function CoverageOverTimeTable() {
           .reverse()
           .map((data, index) => (
             <tr key={index}>
-              <td>{data.name}</td>
+              <td>
+                <Link
+                  to={`/individual-testing`}
+                  className="hover:text-blue-500"
+                >
+                  {data.name}
+                </Link>
+              </td>
               <td>{data.untested}</td>
               <td>{data.tested}</td>
               <td>

@@ -1,6 +1,6 @@
 import "chart.js/auto";
 import { Line } from "react-chartjs-2";
-import { dataCoverageOverTime } from "../../types/run_testing";
+import { dataCoverageOverTime } from "../../types/coverage_over_time";
 
 export default function CoverageOverTimeChart() {
   const data = {

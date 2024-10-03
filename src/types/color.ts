@@ -20,3 +20,13 @@ export const generateColorTesting = (percentage: number) => {
     return `rgb(${red}, ${green}, ${blue})`;
   }
 };
+
+export const getColorTesting = (percentage: number) => {
+  if (percentage >= 80) {
+    return "#6DFF8D";
+  } else if (percentage >= 50) {
+    return "#FFBC6D";
+  } else {
+    return "#FF7070";
+  }
+};
