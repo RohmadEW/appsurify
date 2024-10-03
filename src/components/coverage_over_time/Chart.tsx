@@ -33,10 +33,12 @@ export default function CoverageOverTimeChart() {
         <div className="text-[20px]">Current Coverage</div>
         <div className="badge badge-primary rounded-md">100%</div>
       </div>
-      <div className="w-full h-[200px]">
+      <div className="w-full h-[150px] mt-[10px]">
         <Line
           data={data}
           options={{
+            responsive: true,
+            maintainAspectRatio: false,
             plugins: {
               legend: {
                 display: false,
