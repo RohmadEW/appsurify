@@ -1,5 +1,7 @@
 import { IoIosArrowRoundDown, IoIosArrowRoundUp } from "react-icons/io";
+import { generateColorTesting } from "../../types/color";
 import { dataCoverageOverTime } from "../../types/run_testing";
+import CustomProgressBar from "../general/CustomProgress";
 
 export default function CoverageOverTimeTable() {
   return (
@@ -42,11 +44,12 @@ export default function CoverageOverTimeTable() {
               <td>{data.tested}</td>
               <td>
                 <div className="flex items-center gap-2">
-                  <progress
-                    className="progress progress-accent w-[80px]"
+                  <CustomProgressBar
+                    width="w-[80px]"
                     value={data.coveragePercentage}
-                    max="100"
-                  ></progress>
+                    max={100}
+                    color={generateColorTesting(data.coveragePercentage)}
+                  />
                   <div>{data.coveragePercentage}%</div>
                 </div>
               </td>
