@@ -1,6 +1,6 @@
 import { BsChatDots } from "react-icons/bs";
 import { PiSignIn } from "react-icons/pi";
-import avatar from "../../../assets/avatar.png";
+import avatar from "../../../../assets/avatar.png";
 
 export default function HeaderMain() {
   return (
