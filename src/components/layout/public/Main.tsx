@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import PublicProvider from "../../../provider/PublicProvider";
+import PublicProvider from "../../../providers/PublicProvider";
 
 export const PublicLayout = () => {
   return (

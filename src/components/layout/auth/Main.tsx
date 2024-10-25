@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import AuthProvider from "../../../provider/AuthProvider";
+import AuthProvider from "../../../providers/AuthProvider";
 import HeaderMain from "./header/Main";
 import SidebarMain from "./sidebar/Main";
 
