@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function RegisterMain() {
   return (
     <div className="w-full md:w-[500px] border rounded-md">
@@ -51,7 +53,9 @@ export default function RegisterMain() {
               placeholder="Re-enter Password *"
             />
             <button className="btn btn-primary w-full">Sign Up</button>
-            <button className="btn btn-ghost w-full">Login</button>
+            <Link to="/" className="btn btn-ghost w-full">
+              Login
+            </Link>
           </div>
         </form>
       </div>

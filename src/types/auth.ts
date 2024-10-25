@@ -1,12 +1,18 @@
-import { UserType } from "./user";
+import { User } from "./user";
 
 export interface AuthType {
   isAuthenticated: boolean;
   token?: string | null;
-  loading?: boolean;
-  user?: UserType | null;
+  refresh?: string | null;
+  user?: User;
 }
 
 export const initialAuthState: AuthType = {
   isAuthenticated: false,
 };
+
+export interface JWT {
+  access: string;
+  refresh: string;
+  user: User;
+}
