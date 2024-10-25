@@ -20,7 +20,11 @@ export const useRegister = () => {
       dispatch(login(jwt));
     },
     onError: (error) => {
-      toast(error.response?.data.detail || "An error occurred.");
+      toast(
+        error.response?.data.detail ||
+          error.response?.data.non_field_errors?.join(", ") ||
+          "An error occurred."
+      );
     },
   });
 };

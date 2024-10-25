@@ -1,5 +1,6 @@
 export interface ErrorResponse {
-  detail: string;
+  detail?: string;
+  non_field_errors?: string[];
 }
 
 export interface Response<R = Record<string, string>> {
