@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useCookies } from "react-cookie";
 import { Navigate } from "react-router-dom";
+import { apiClient, setClientToken } from "../api/api-client";
 import { useAppDispatch, useAppSelector } from "../hooks/useStore";
 import { login } from "../store/authSlice";
 
@@ -15,6 +16,7 @@ const PublicProvider = ({ children }: Props) => {
 
   useEffect(() => {
     if (cookies.auth) {
+      setClientToken(apiClient, cookies.auth.token);
       dispatch(login(cookies.auth));
     }
   }, [cookies, dispatch]);
