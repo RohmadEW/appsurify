@@ -1,5 +1,7 @@
 import { User } from "./user";
 
+export const AUTH_COOKIES = "auth";
+
 export interface AuthType {
   isAuthenticated: boolean;
   token?: string | null;

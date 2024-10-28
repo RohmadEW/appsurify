@@ -2,22 +2,22 @@ import { useMutation } from "@tanstack/react-query";
 import { AxiosError } from "axios";
 import { useCookies } from "react-cookie";
 import { toast } from "react-toastify";
-import { postLogin, PostLoginArgs } from "../api/postLogin";
-import { login } from "../store/authSlice";
-import { AUTH_COOKIES, JWT } from "../types/auth";
+import { postLogout } from "../api/postLogout";
+import { logout } from "../store/authSlice";
+import { AUTH_COOKIES } from "../types/auth";
 import { ErrorResponse } from "../types/response";
 import { useAppDispatch } from "./useStore";
 
-export const useLogin = () => {
+export const useLogout = () => {
   const dispatch = useAppDispatch();
   const [, setCookies] = useCookies([AUTH_COOKIES]);
 
-  return useMutation<JWT, AxiosError<ErrorResponse>, PostLoginArgs>({
-    mutationFn: async (args) => await postLogin(args),
-    onSuccess: (jwt: JWT) => {
-      toast("Login successful.");
-      setCookies(AUTH_COOKIES, jwt);
-      dispatch(login(jwt));
+  return useMutation<string | undefined, AxiosError<ErrorResponse>, unknown>({
+    mutationFn: async () => await postLogout(),
+    onSuccess: () => {
+      toast("Logout successful.");
+      setCookies(AUTH_COOKIES, null);
+      dispatch(logout());
     },
     onError: (error) => {
       toast(
