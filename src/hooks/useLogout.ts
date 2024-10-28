@@ -12,19 +12,27 @@ export const useLogout = () => {
   const dispatch = useAppDispatch();
   const [, setCookies] = useCookies([AUTH_COOKIES]);
 
+  const destroySession = () => {
+    toast("Logout successful.");
+    setCookies(AUTH_COOKIES, null);
+    dispatch(logout());
+  };
+
   return useMutation<string | undefined, AxiosError<ErrorResponse>, unknown>({
     mutationFn: async () => await postLogout(),
     onSuccess: () => {
-      toast("Logout successful.");
-      setCookies(AUTH_COOKIES, null);
-      dispatch(logout());
+      destroySession();
     },
     onError: (error) => {
-      toast(
-        error.response?.data.detail ||
-          error.response?.data.non_field_errors?.join(", ") ||
-          "An error occurred."
-      );
+      if (error.response?.data.code === "token_not_valid") {
+        destroySession();
+      } else {
+        toast(
+          error.response?.data.detail ||
+            error.response?.data.non_field_errors?.join(", ") ||
+            "An error occurred."
+        );
+      }
     },
   });
 };

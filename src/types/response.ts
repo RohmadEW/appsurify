@@ -1,6 +1,8 @@
-export interface ErrorResponse {
+export interface ErrorResponse<R = Record<string, string>> {
+  code?: string;
   detail?: string;
   non_field_errors?: string[];
+  message?: R;
 }
 
 export interface Response<R = Record<string, string>> {
