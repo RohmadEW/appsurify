@@ -63,8 +63,12 @@ const setClientToken = (instance: AxiosInstance, token: string) => {
   instance.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 };
 
+const removeClientToken = (instance: AxiosInstance) => {
+  delete instance.defaults.headers.common["Authorization"];
+};
+
 const apiClient = ApiClient({
   baseURL: API_URL ?? "",
 });
 
-export { apiClient, setClientToken };
+export { apiClient, removeClientToken, setClientToken };
